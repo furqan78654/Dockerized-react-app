@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: syedfurqanjaved/react786:v1  # Your image in public Docker Hub repository
+        resources:
+          limits:
+            memory: "2Gi"   # 2 GB memory
+            cpu: "1000m"    # 1 vCPU
+        ports:
+        - containerPort: 80
